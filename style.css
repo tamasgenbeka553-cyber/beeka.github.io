@@ -15,6 +15,23 @@
   --button-text: #06131d;
 }
 
+body[data-theme="dark"] {
+  --bg: #071522;
+  --bg-soft: #0f1d2e;
+  --bg-card: #101f33;
+  --panel: #16263d;
+  --panel-alt: #1b2e49;
+  --primary: #4f8cff;
+  --primary-strong: #3b82f6;
+  --accent: #7dd3fc;
+  --text: #ecf3ff;
+  --muted: #b7c6db;
+  --line: rgba(255, 255, 255, 0.08);
+  --shadow: rgba(16, 24, 40, 0.35);
+  --input: #0d1727;
+  --button-text: #06131d;
+}
+
 body[data-theme="light"] {
   --bg: #edf4ff;
   --bg-soft: #f7faff;
@@ -31,7 +48,6 @@ body[data-theme="light"] {
   --input: #ffffff;
   --button-text: #ffffff;
 }
-
 * {
   box-sizing: border-box;
 }
@@ -46,6 +62,7 @@ body {
   background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
   color: var(--text);
   line-height: 1.7;
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
 a {

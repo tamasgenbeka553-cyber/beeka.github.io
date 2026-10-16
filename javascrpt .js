@@ -5,23 +5,26 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   const body = document.body;
-  const themeToggle = document.getElementById('themeToggle');
+  const themeToggleBtn = document.getElementById('themeToggle');
 
-  const applyTheme = function (mode) {
-    body.setAttribute('data-theme', mode);
-    if (themeToggle) {
-      themeToggle.textContent = mode === 'dark' ? '☀️' : '🌙';
+  function updateToggleIcon(theme) {
+    if (themeToggleBtn) {
+      themeToggleBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
     }
-    localStorage.setItem('portfolio-theme', mode);
-  };
+  }
 
-  const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
-  applyTheme(savedTheme);
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  body.setAttribute('data-theme', savedTheme);
+  updateToggleIcon(savedTheme);
 
-  if (themeToggle) {
-    themeToggle.addEventListener('click', function () {
-      const nextMode = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      applyTheme(nextMode);
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', function () {
+      const currentTheme = body.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+      body.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateToggleIcon(newTheme);
     });
   }
 
